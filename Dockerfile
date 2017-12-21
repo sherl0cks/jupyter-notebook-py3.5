@@ -32,7 +32,9 @@ RUN echo 'PS1="\u@\h:\w\\$ \[$(tput sgr0)\]"' >> /root/.bashrc \
     && chmod -R ug+rwx /opt \
     && useradd -m -s /bin/bash -N -u $NB_UID $NB_USER \
     && usermod -g root $NB_USER \
-    && yum install -y curl wget curl tree java-headless bzip2 gnupg2 sqlite3 gcc gcc-c++ glibc-devel git mesa-libGL mesa-libGL-devel ca-certificates vim 
+    && yum install -y -v python-devel curl wget curl tree java-headless bzip2 gnupg2 sqlite3 gcc gcc-c++ glibc-devel git mesa-libGL mesa-libGL-devel ca-certificates vim \
+    && yum clean all 
+
     
 
 
@@ -72,8 +74,11 @@ RUN mkdir $HOME/.jupyter \
     && $CONDA_DIR/bin/conda remove --quiet --yes --force qt pyqt \
     && jupyter nbextension enable --py widgetsnbextension --sys-prefix \
     && fix-permissions.sh $CONDA_DIR \
-    && fix-permissions.sh $HOME 
+    && fix-permissions.sh $HOME \
+    && pip install --user --upgrade jupyterthemes
 
+ENV PATH "/home/${NB_USER}/.local/bin:${PATH}"
+RUN jt -t oceans16
 
 USER root
 
