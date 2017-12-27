@@ -16,6 +16,7 @@ fi
 # this is just a temp hack while I wait on https://github.com/sherl0cks/jupyter-notebook-py3.5.git
 pip install --upgrade jupyterthemes jsonlines plotly
 jt -t oceans16
+curl -O https://raw.githubusercontent.com/sherl0cks/labs-big-data/master/notebooks/plot_cryptocurrencies.ipynb
 
 
 if [[ "$JUPYTERLAB" == true ]]; then
