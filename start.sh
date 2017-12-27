@@ -20,3 +20,7 @@ else
 	exec jupyter notebook
 fi
 
+# This will be replaced by s2i functionality in the future.
+# this is just a temp hack while I wait on https://github.com/sherl0cks/jupyter-notebook-py3.5.git
+pip install --upgrade jupyterthemes jsonlines plotly
+jt -t oceans16
