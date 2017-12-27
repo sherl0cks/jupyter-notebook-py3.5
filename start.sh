@@ -12,6 +12,12 @@ if [[ -n "$JUPYTER_NOTEBOOK_X_INCLUDE" ]]; then
     curl -O $JUPYTER_NOTEBOOK_X_INCLUDE
 fi
 
+# This will be replaced by s2i functionality in the future.
+# this is just a temp hack while I wait on https://github.com/sherl0cks/jupyter-notebook-py3.5.git
+pip install --upgrade jupyterthemes jsonlines plotly
+jt -t oceans16
+
+
 if [[ "$JUPYTERLAB" == true ]]; then
 	echo "jupyter lab...."
     exec jupyter lab
@@ -20,7 +26,3 @@ else
 	exec jupyter notebook
 fi
 
-# This will be replaced by s2i functionality in the future.
-# this is just a temp hack while I wait on https://github.com/sherl0cks/jupyter-notebook-py3.5.git
-pip install --upgrade jupyterthemes jsonlines plotly
-jt -t oceans16
