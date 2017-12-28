@@ -18,6 +18,12 @@ if [[ -n "$JUPYTER_NOTEBOOK_PIP_PACKAGES" ]]; then
     pip install --user --upgrade $JUPYTER_NOTEBOOK_PIP_PACKAGES
 fi
 
+# only supports 1 extension right now
+if [[ -n "$JUPYTER_NOTEBOOK_EXTENSION" ]]; then
+    jupyter nbextension enable --py $JUPYTER_NOTEBOOK_EXTENSION
+fi
+
+
 jt -t oceans16
 curl -O https://raw.githubusercontent.com/sherl0cks/labs-big-data/master/notebooks/plot_cryptocurrencies.ipynb
 
