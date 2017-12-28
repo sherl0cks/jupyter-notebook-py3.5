@@ -74,7 +74,8 @@ RUN mkdir $HOME/.jupyter \
     && $CONDA_DIR/bin/conda remove --quiet --yes --force qt pyqt \
     && jupyter nbextension enable --py widgetsnbextension --sys-prefix \
     && fix-permissions.sh $CONDA_DIR \
-    && fix-permissions.sh $HOME
+    && fix-permissions.sh $HOME \
+    && chow
 
 ENV PATH "/home/${NB_USER}/.local/bin:${PATH}"
 
@@ -106,6 +107,8 @@ ENV XDG_CACHE_HOME /home/$NB_USER/.cache/
 RUN export PATH=$CONDA_DIR/bin:$PATH \
     && MPLBACKEND=Agg python -c "import matplotlib.pyplot" \
     fix-permissions /home/$NB_USER
+
+RUN chown -R $NB_USER /home/$NB_USER
 
 ADD start.sh /usr/local/bin/start.sh
 WORKDIR /notebooks
