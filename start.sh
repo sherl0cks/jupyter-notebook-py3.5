@@ -26,6 +26,7 @@ fi
 
 jt -t oceans16
 curl -O https://raw.githubusercontent.com/sherl0cks/labs-big-data/master/notebooks/plot_cryptocurrencies.ipynb
+curl -O https://raw.githubusercontent.com/sherl0cks/labs-big-data/master/notebooks/residency_mapping.ipynb
 
 
 if [[ "$JUPYTERLAB" == true ]]; then
