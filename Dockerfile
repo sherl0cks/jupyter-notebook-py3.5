@@ -74,8 +74,7 @@ RUN mkdir $HOME/.jupyter \
     && $CONDA_DIR/bin/conda remove --quiet --yes --force qt pyqt \
     && jupyter nbextension enable --py widgetsnbextension --sys-prefix \
     && fix-permissions.sh $CONDA_DIR \
-    && fix-permissions.sh $HOME \
-    && chow
+    && fix-permissions.sh $HOME 
 
 ENV PATH "/home/${NB_USER}/.local/bin:${PATH}"
 
