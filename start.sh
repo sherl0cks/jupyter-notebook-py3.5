@@ -12,9 +12,12 @@ if [[ -n "$JUPYTER_NOTEBOOK_X_INCLUDE" ]]; then
     curl -O $JUPYTER_NOTEBOOK_X_INCLUDE
 fi
 
-# This will be replaced by s2i functionality in the future.
+# The below will be replace by s2i in the future
 # this is just a temp hack while I wait on https://github.com/sherl0cks/jupyter-notebook-py3.5.git
-pip install --upgrade jupyterthemes jsonlines plotly
+if [[ -n "$JUPYTER_NOTEBOOK_PIP_PACKAGES" ]]; then
+    pip install --user --upgrade $JUPYTER_NOTEBOOK_PIP_PACKAGES
+fi
+
 jt -t oceans16
 curl -O https://raw.githubusercontent.com/sherl0cks/labs-big-data/master/notebooks/plot_cryptocurrencies.ipynb
 

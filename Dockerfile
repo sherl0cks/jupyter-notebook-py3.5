@@ -74,11 +74,10 @@ RUN mkdir $HOME/.jupyter \
     && $CONDA_DIR/bin/conda remove --quiet --yes --force qt pyqt \
     && jupyter nbextension enable --py widgetsnbextension --sys-prefix \
     && fix-permissions.sh $CONDA_DIR \
-    && fix-permissions.sh $HOME \
-    && pip install --user --upgrade jupyterthemes
+    && fix-permissions.sh $HOME
 
 ENV PATH "/home/${NB_USER}/.local/bin:${PATH}"
-RUN jt -t oceans16
+
 
 USER root
 
