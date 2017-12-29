@@ -25,9 +25,7 @@ fi
 
 
 jt -t oceans16
-curl -O https://raw.githubusercontent.com/sherl0cks/labs-big-data/master/notebooks/plot_cryptocurrencies.ipynb
-curl -O https://raw.githubusercontent.com/sherl0cks/labs-big-data/master/notebooks/residency_mapping_ipyleaflet.ipynb
-curl -O https://raw.githubusercontent.com/sherl0cks/labs-big-data/master/notebooks/residency_mapping_folium.ipynb
+git clone https://github.com/sherl0cks/labs-big-data.git
 
 if [[ "$JUPYTERLAB" == true ]]; then
 	echo "jupyter lab...."
